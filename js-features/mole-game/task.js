@@ -15,8 +15,12 @@ for (let i = 1; i <= 9; i++) {
 
           if (deads.textContent == 10) {
             alert("Вы выйграли!");
+            deads.textContent = 0;
+            losts.textContent = 0;
           } else if (losts.textContent == 5) {
             alert("Вы проиграли!");
+            deads.textContent = 0;
+            losts.textContent = 0;
           };
     };
 };
