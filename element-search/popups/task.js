@@ -12,5 +12,6 @@ modalClose.forEach(element => element.onclick = () => {
 });
 
 showSuccess.onclick = () => {
+    modalMain.classList.remove("modal_active");
     modalSuccess.classList.add("modal_active");
 };
