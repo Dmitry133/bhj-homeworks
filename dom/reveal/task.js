@@ -1,14 +1,13 @@
 const reveals = Array.from(document.querySelectorAll(".reveal"));
 
-function isVisible() {
-
+window.addEventListener("scroll", () => {
     reveals.forEach(element => {
-        if ((element.getBoundingClientRect().bottom < 0 || element.getBoundingClientRect().top > window.innerHeight) && element.classList.contains("reveal_active")) {
+        const {top, bottom} = element.getBoundingClientRect();
+        if (bottom < 0 || top > window.innerHeight) {
             element.classList.remove("reveal_active");
         } else {
             element.classList.add("reveal_active");
         }
-})};
-
-window.addEventListener("scroll", () => isVisible());
+    });
+});
 
