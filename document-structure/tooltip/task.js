@@ -14,7 +14,12 @@ hasToolTip.forEach(element =>  {
             }
                 toolTip.classList.toggle("tooltip_active");
 
+                let {top} = element.getBoundingClientRect();
+                toolTip.style.top = top + 20 + "px";
+                toolTip.style.left = "0px";
                 element.insertAdjacentElement("afterend", toolTip);
+
+
                 e.preventDefault();
         });
 });

@@ -4,8 +4,7 @@ const taskList = document.getElementById("tasks__list");
 
 taskBtnAdd.addEventListener("click", (e) => {
     e.preventDefault();
-
-    let todoText = taskInput.value;
+    let todoText = taskInput.value.trim();
     
     if (todoText) {
         taskList.insertAdjacentHTML('afterBegin',
@@ -13,15 +12,16 @@ taskBtnAdd.addEventListener("click", (e) => {
                 <div class="task__title">${todoText}</div>
                 <a href="#" class="task__remove">&times;</a>
             </div>`);
-        taskInput.value = '';
-    };
-
-    let taskRemove = document.querySelector(".task__remove");
-    let task = document.querySelector('.task');
-
-    taskRemove.addEventListener('click', (e) => {
         
+    
+    let taskRemove = document.querySelector(".task__remove");
+    let task = document.querySelector(".task");
+
+    taskRemove.addEventListener("click", (e) => {
+        e.preventDefault();
         task.remove();
         
       });
+    };
+    taskInput.value = '';
 });
