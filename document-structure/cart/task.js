@@ -28,7 +28,7 @@ for (let i = 0; i < productAdd.length; i++) {
         const findProduct = cartProduct.find(item => item.dataset.id == productId);   
         
        
-        if (cartProduct.find(item => item.dataset.id == productId)) {
+        if (findProduct) {
           
             const actualityQuantity = findProduct.querySelector('.cart__product-count');
             const additionalQuantity = product[i].querySelector(".product__quantity-value");
