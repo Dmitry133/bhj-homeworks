@@ -12,11 +12,12 @@ function auth() {
         let formData = new FormData(signinForm);
         let xhr = new XMLHttpRequest();
         xhr.open("POST", "https://students.netoservices.ru/nestjs-backend/auth");
+        xhr.responseType = 'json';
         xhr.send(formData);
 
-        xhr.addEventListener("readystatechange", () => {
-            if (xhr.readyState === xhr.DONE) {
-                let data = JSON.parse(xhr.responseText);
+        xhr.addEventListener("load", () => {
+           
+                let data = xhr.response;
 
                 if (data.success) {
                     signin.classList.remove("signin_active");
@@ -26,8 +27,10 @@ function auth() {
                 } else {
                     alert("Неверный логин/пароль!");
                 };
-            };
+            
         });
+
+        signinForm.reset();
     });
 };
 
@@ -35,6 +38,6 @@ if (localStorage.userId) {
     signin.classList.remove("signin_active");
     welcome.classList.add("welcome_active");
     userId.innerHTML = localStorage.userId;
-} else {
-    auth();
-};
+}
+
+auth();
